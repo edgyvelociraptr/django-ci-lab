@@ -1,5 +1,7 @@
 # Use the official Python image from the Docker Hub
 FROM python:3.9-slim
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
 # Set the working directory in the container
 WORKDIR /app
@@ -15,6 +17,7 @@ COPY . .
 
 # Expose port 8000
 EXPOSE 8000
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 # Define environment variable
 ENV PYTHONUNBUFFERED=1
